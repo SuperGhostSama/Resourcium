@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<%@ include file="WEB-INF/Component/navbar.jsp" %>
 <html>
+<%@ include file="WEB-INF/Component/head.jsp" %>
+<%@ include file="WEB-INF/Component/navbar.jsp" %>
 <head>
     <title>JSP - Hello World</title>
 </head>
