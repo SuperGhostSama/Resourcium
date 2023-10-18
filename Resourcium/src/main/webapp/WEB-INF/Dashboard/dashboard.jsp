@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Youcode
-  Date: 10/17/2023
-  Time: 11:16
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
+<%@ include file="../Component/dashboard-head.jsp" %>
+<%@ include file="../Component/dashboard-sidenav.jsp" %>
+
 <body>
   Dashboard
 </body>
+
+<%@ include file="../Component/dashboard-script.jsp" %>
 </html>
