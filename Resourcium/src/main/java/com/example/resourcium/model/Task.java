@@ -16,4 +16,8 @@ public class Task {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date endDate;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }

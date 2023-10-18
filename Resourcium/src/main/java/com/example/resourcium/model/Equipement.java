@@ -1,5 +1,6 @@
 package com.example.resourcium.model;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Equipement {
@@ -10,4 +11,6 @@ public class Equipement {
     private String name;
     private String type;
     private boolean availability;
+
+
 }
