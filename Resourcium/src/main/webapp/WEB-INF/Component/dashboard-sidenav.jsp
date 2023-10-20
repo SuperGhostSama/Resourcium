@@ -13,7 +13,7 @@
         </li>
 
         <li>
-            <a href="">
+            <a href="${pageContext.request.contextPath}/dashboard">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
@@ -39,7 +39,7 @@
         </li>
 
         <li>
-            <a href="">
+            <a href="${pageContext.request.contextPath}/profile">
                     <span class="icon">
                         <ion-icon name="settings-outline"></ion-icon>
                     </span>

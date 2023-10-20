@@ -1,8 +1,9 @@
 <html>
 <%@ include file="../Component/dashboard-head.jsp" %>
-<%@ include file="../Component/dashboard-sidenav.jsp" %>
 
 <body>
+
+<%@ include file="../Component/dashboard-sidenav.jsp" %>
   Dashboard
 </body>
 
