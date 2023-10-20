@@ -46,7 +46,6 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("registrationError", "Email already exists. Please choose another.");
             response.sendRedirect(request.getContextPath() + "/register");
         } else {
-            // No user with the same email, proceed with registration
             // Create a new user entity and set the user data
             User user = new User();
             user.setFullName(name);
@@ -54,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
             user.setPassword(hashedPassword);
 
             // Retrieve the role with ID 2 from the database
-            Role role = entityManager.find(Role.class, 2); // Assuming Role entity has an ID of 2
+            Role role = entityManager.find(Role.class, 2); // id = 2 = Worker
 
             // Set the role of the user
             user.setRole(role);

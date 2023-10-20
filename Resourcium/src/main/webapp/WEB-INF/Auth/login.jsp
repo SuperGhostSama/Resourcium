@@ -3,11 +3,20 @@
 <%@ include file="../Component/head.jsp" %>
 <%@ include file="../Component/navbar.jsp" %>
 <body>
+
+<% String loginFailed = (String) session.getAttribute("loginFailed"); %>
+<% if (loginFailed != null && !loginFailed.isEmpty()) { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong><%= loginFailed %></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+
 <section id="loginSection">
     <div class="d-flex justify-content-center align-items-center " style="height: 100vh;">
         <div class="col-sm-12 col-md-9 col-lg-5 text-white border border-4 border-secondary rounded p-5 ">
             <h3 class="text-center mb-4 fw-bold">Log In</h3>
-            <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
+            <form action="${pageContext.request.contextPath}/login" method="POST">
                 <div class="mb-3">
                     <label for="email_address" class="form-label ">Email address</label>
                     <input name="email" type="text" class="form-control opacity-50" id="email_address" aria-describedby="emailHelp" placeholder="email@mail.com" required >
@@ -27,5 +36,8 @@
         </div>
     </div>
 </section>
+
+<%@ include file="../Component/script.jsp" %>
+
 </body>
 </html>
