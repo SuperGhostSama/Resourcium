@@ -1,10 +1,7 @@
 package com.example.resourcium.controller;
 
 import com.example.resourcium.model.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -25,9 +22,15 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        if (authenticateUser(email, password)) {
+        // Authenticate the user and retrieve user information from the database
+        User user = authenticateUser(email, password);
+
+        if (user != null) {
+            // User logged in successfully
             HttpSession session = request.getSession();
             session.setAttribute("loginSuccess", "Logged in successfully");
+            session.setAttribute("fullName", user.getFullName()); // Set the user's full name
+            session.setAttribute("email", email);
 
             response.sendRedirect(request.getContextPath() + "/dashboard");
         } else {
@@ -39,7 +42,8 @@ public class LoginServlet extends HttpServlet {
     }
 
 
-    private boolean authenticateUser(String email, String password) {
+
+    private User authenticateUser(String email, String password) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -49,20 +53,21 @@ public class LoginServlet extends HttpServlet {
                     "SELECT u FROM User u WHERE u.email = :email", User.class);
             query.setParameter("email", email);
 
-            User user = null;
             try {
-                user = query.getSingleResult();
-            } catch (Exception e) {
-                // User not found
-                return false;
-            }
+                User user = query.getSingleResult();
 
-            // Compare the db password with given one
-            return BCrypt.checkpw(password, user.getPassword());
+                // Compare the hashed password
+                if (BCrypt.checkpw(password, user.getPassword())) {
+                    return user; // Authentication successful
+                }
+            } catch (NoResultException e) {
+                // User not found
+            }
         } finally {
             entityManager.close();
             entityManagerFactory.close();
         }
 
+        return null; // Authentication failed
     }
 }

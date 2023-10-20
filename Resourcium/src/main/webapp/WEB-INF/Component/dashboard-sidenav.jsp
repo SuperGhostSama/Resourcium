@@ -12,6 +12,14 @@
             </a>
         </li>
 
+        <li>
+            <a href="">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
 
         <li>
             <a href="">
@@ -59,7 +67,7 @@
 
 
         <a class="badge text-bg-primary fs-6 text-decoration-none" href="/">
-            <span>Salah</span>
+            <span>${sessionScope.fullName}</span>
         </a>
 
 
