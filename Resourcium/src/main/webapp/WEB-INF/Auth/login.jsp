@@ -12,6 +12,14 @@
 </div>
 <% } %>
 
+<% String registrationSuccess = (String) session.getAttribute("registrationSuccess"); %>
+<% if (registrationSuccess != null && !registrationSuccess.isEmpty()) { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong><%= registrationSuccess %></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+
 <section id="loginSection">
     <div class="d-flex justify-content-center align-items-center " style="height: 100vh;">
         <div class="col-sm-12 col-md-9 col-lg-5 text-white border border-4 border-secondary rounded p-5 ">

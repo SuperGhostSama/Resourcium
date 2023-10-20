@@ -3,6 +3,15 @@
 <%@ include file="../Component/head.jsp" %>
 <%@ include file="../Component/navbar.jsp" %>
 <body>
+
+<% String registrationError = (String) session.getAttribute("registrationError"); %>
+<% if (registrationError != null && !registrationError.isEmpty()) { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong><%= registrationError %></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+
 <section id="signupSection">
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-sm-12 col-md-9 col-lg-5 text-white border border-4 border-secondary rounded p-5 ">
@@ -36,5 +45,7 @@
         </div>
     </div>
 </section>
+<%@ include file="../Component/script.jsp" %>
+
 </body>
 </html>
