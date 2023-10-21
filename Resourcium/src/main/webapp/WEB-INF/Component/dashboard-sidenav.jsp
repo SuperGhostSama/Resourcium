@@ -22,7 +22,7 @@
         </li>
 
         <li>
-            <a href="">
+            <a href="/tasks">
                     <span class="icon">
                         <ion-icon name="card-outline"></ion-icon>
                     </span>
