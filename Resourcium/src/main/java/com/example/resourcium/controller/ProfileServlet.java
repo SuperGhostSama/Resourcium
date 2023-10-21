@@ -29,13 +29,12 @@ public class ProfileServlet extends HttpServlet {
 
         // Check if the user is authenticated (exists in the session)
         if (userEmailAddress != null) {
-            // Create an EntityManager to interact with the database
+
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             EntityTransaction transaction = entityManager.getTransaction();
 
             try {
-                // Begin a transaction
                 transaction.begin();
 
                 // Retrieve the user entity by email
@@ -55,13 +54,11 @@ public class ProfileServlet extends HttpServlet {
                 session.setAttribute("fullName", fullName);
                 session.setAttribute("email", email);
             } catch (Exception e) {
-                // Handle exceptions (e.g., transaction rollback, display error message)
                 if (transaction != null && transaction.isActive()) {
                     transaction.rollback();
                 }
                 e.printStackTrace();
             } finally {
-                // Close the EntityManager and EntityManagerFactory
                 entityManager.close();
                 entityManagerFactory.close();
             }
@@ -69,8 +66,7 @@ public class ProfileServlet extends HttpServlet {
             // Redirect to the user's profile page
             response.sendRedirect(request.getContextPath() + "/profile");
         } else {
-            // User is not authenticated, handle the unauthorized access
-            // You can redirect them to a login page or show an error message
+            // User is not authenticated redirect to a login page
             response.sendRedirect(request.getContextPath() + "/login");
         }
     }

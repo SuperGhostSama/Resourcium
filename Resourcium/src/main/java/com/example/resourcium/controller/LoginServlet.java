@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("loginSuccess", "Logged in successfully");
             session.setAttribute("fullName", user.getFullName()); // Set the user's full name
             session.setAttribute("email", email);
-
+            session.setAttribute("role", user.getRole().getRoleName());
 
             response.sendRedirect(request.getContextPath() + "/dashboard");
         } else {
