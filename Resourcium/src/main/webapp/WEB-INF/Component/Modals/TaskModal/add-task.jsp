@@ -1,3 +1,4 @@
+<%@ page import="com.example.resourcium.model.User" %>
 <!-- MODAL -->
 <div class="modal fade" id="modal-tasks-add" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     <div class="modal-dialog">
@@ -15,8 +16,16 @@
                         <select name="assignedTo"  class="form-select" aria-label="Default select example">
                             <option selected disabled>Open this select menu</option>
 
-                            <option value="">Hamid</option>
-                            <option value="">Hassan</option>
+                            <%
+                                // Iterate through users and generate options
+                                List<User> users = (List<User>) request.getAttribute("users");
+
+                                for (User user : users) {
+                            %>
+                            <option value="<%= user.getFullName() %>"><%= user.getFullName() %></option>
+                            <%
+                                }
+                            %>
 
                         </select>
                     </div>
