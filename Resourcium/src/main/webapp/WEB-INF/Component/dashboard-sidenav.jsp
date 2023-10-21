@@ -22,7 +22,7 @@
         </li>
 
         <li>
-            <a href="/tasks">
+            <a href="${pageContext.request.contextPath}/tasks">
                     <span class="icon">
                         <ion-icon name="card-outline"></ion-icon>
                     </span>
