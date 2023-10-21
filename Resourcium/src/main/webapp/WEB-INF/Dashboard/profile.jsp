@@ -17,30 +17,22 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
-                <form id="updateForm" action="" method="POST" data-parsley-validate>
+                <form id="updateForm" action="${pageContext.request.contextPath}/profile" method="POST" >
 
                     <div class="row mt-2">
                         <div class="col-md-12"><label class="labels">Name</label>
-                            <input form="updateForm" type="text" name="name" class="form-control" placeholder="first name" data-parsley-pattern="/^[a-zA-Z ]*$/" required value="${sessionScope.fullName}">
+                            <input form="updateForm" type="text" name="fullName" class="form-control" placeholder="Full Name" required value="${sessionScope.fullName}">
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Email</label>
-                            <input form="updateForm" type="email" name="email" class="form-control" placeholder="enter email" data-parsley-pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required value="${sessionScope.email}">
-                        </div>
-                        <div class="col-md-12"><label class="labels">Password</label>
-                            <input form="updateForm" type="password" name="password" class="form-control" placeholder="" value="********">
+                            <input form="updateForm" type="email" name="email" class="form-control" placeholder="enter email" required value="${sessionScope.email}">
                         </div>
                     </div>
 
                     <div class="mt-5 text-center">
                         <button form="updateForm" class="btn btn-primary profile-button" type="submit">Save Profile</button>
-                        <button class="btn btn-danger profile-button" type="submit" form="deleteForm">Delete Profile</button>
                     </div>
-                </form>
-                <form id="deleteForm" class="d-inline" method="POST" action="">
-
-                    <input type="hidden" name="_method" value="DELETE" form="deleteForm">
                 </form>
             </div>
         </div>
