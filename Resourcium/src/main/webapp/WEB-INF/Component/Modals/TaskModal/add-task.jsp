@@ -3,7 +3,7 @@
 <div class="modal fade" id="modal-tasks-add" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="POST" id="form" enctype="multipart/form-data" data-parsley-validate>
+            <form action="${pageContext.request.contextPath}/tasks" method="POST" id="form" enctype="multipart/form-data">
 
 
                 <div class="modal-header">
@@ -22,7 +22,7 @@
 
                                 for (User user : users) {
                             %>
-                            <option value="<%= user.getFullName() %>"><%= user.getFullName() %></option>
+                            <option value="<%= user.getId() %>"><%= user.getFullName() %></option>
                             <%
                                 }
                             %>
