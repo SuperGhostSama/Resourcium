@@ -3,7 +3,7 @@
 <div class="modal fade" id="modal-tasks-add" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="${pageContext.request.contextPath}/tasks" method="POST" id="form" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/tasks" method="POST" id="form" >
 
 
                 <div class="modal-header">
@@ -17,7 +17,7 @@
                             <option selected disabled>Open this select menu</option>
 
                             <%
-                                // Iterate through users and generate options
+                                // Iterate through users
                                 List<User> users = (List<User>) request.getAttribute("users");
 
                                 for (User user : users) {

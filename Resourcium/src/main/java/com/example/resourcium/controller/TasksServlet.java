@@ -46,6 +46,11 @@ public class TasksServlet extends HttpServlet {
         String startDateStr = request.getParameter("startDate");
         String endDateStr = request.getParameter("endDate");
 
+        System.out.println(assignedUserId);
+        System.out.println(description);
+        System.out.println(startDateStr);
+        System.out.println(endDateStr);
+
         // Parse the date strings into LocalDate objects
         LocalDate startDate = parseDate(startDateStr);
         LocalDate endDate = parseDate(endDateStr);
