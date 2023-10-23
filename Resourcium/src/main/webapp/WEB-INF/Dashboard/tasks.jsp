@@ -52,7 +52,9 @@
                 <td>
                     <a id="view-button" href="#modal-tasks-view" data-bs-toggle="modal"><ion-icon name="eye-outline"></ion-icon></a>
                     <a id="edit-button" href="#modal-tasks-edit" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>
-                    <form class="d-inline" method="POST" action="">
+
+                    <form class="d-inline" method="POST" action="${pageContext.request.contextPath}/TasksDeleteServlet">
+                        <input type="hidden" name="taskId" value="<%= task.getId() %>">
                         <button class="unstyled" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
                     </form>
                 </td>
