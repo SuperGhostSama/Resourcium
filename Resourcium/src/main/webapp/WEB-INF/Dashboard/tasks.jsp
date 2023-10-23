@@ -50,7 +50,7 @@
                 <td><%= task.getStartDate() %></td>
                 <td><%= task.getEndDate() %></td>
                 <td>
-                    <a id="view-button" href="#modal-tasks-view" data-bs-toggle="modal"><ion-icon name="eye-outline"></ion-icon></a>
+                    <a id="view-button" onclick="showTask(this)" href="#modal-tasks-view" data-bs-toggle="modal"><ion-icon name="eye-outline"></ion-icon></a>
                     <a id="edit-button" href="#modal-tasks-edit" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>
 
                     <form class="d-inline" method="POST" action="${pageContext.request.contextPath}/TasksDeleteServlet">
@@ -69,6 +69,16 @@
     </div>
 
 </div>
+<script>
+    function showTask(element){
+        let myData=element.parentElement.parentElement.getElementsByTagName("td");
+        document.getElementById("assignedToView").value=myData[0].innerText;
+        document.getElementById("descriptionView").value=myData[1].innerText;
+        document.getElementById("startDateView").value=myData[2].innerText;
+        document.getElementById("endDateView").value=myData[3].innerText;
+    }
+</script>
+
 
 <%@ include file="../Component/Modals/TaskModal/add-task.jsp" %>
 <%@ include file="../Component/Modals/TaskModal/update-task.jsp" %>

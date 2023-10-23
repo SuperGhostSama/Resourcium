@@ -12,25 +12,20 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label" >Assigned To</label>
-                        <select name="assignedTo"  class="form-select" aria-label="Default select example">
-                            <option selected disabled>Open this select menu</option>
+                        <input disabled type="text" class="form-control" id="assignedToView" name="startDate">
 
-                            <option value="">Hamid</option>
-                            <option value="">Hassan</option>
-
-                        </select>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="message-text" class="col-form-label">Description</label>
-                        <textarea class="form-control" id="message-text" name="description"></textarea>
+                        <label for="descriptionView" class="col-form-label">Description</label>
+                        <textarea disabled class="form-control" id="descriptionView" name="description"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Start Date</label>
-                        <input type="date" class="form-control" name="startDate">
+                        <input disabled type="text" class="form-control" id="startDateView" name="startDate">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">End Date</label>
-                        <input type="date" class="form-control" name="endDate">
+                        <input disabled type="text" class="form-control" id="endDateView" name="endDate">
                     </div>
 
 
@@ -38,7 +33,6 @@
 
                 <div class="modal-footer">
                     <button type="button" data-bs-dismiss="modal" class="btn btn-secondary" >Cancel</button>
-                    <button type="submit" name="save" class="btn btn-primary task-action-btn" id="save">Save</button>
                 </div>
             </form>
         </div>
