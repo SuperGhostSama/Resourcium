@@ -68,3 +68,8 @@ This README provides a basic overview of setting up and running a Java EE projec
 ## Canva
 -[Canva](https://www.canva.com/design/DAFWJ5nS-Fc/41xb1KbKiIO84tL-B6FtZA/edit?utm_content=DAFWJ5nS-Fc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
+## FIGMA
+-[Figma](https://www.figma.com/file/cMN20ryxglJ6Rg41HcT3y1/HR-MANAGEMENT?type=design&node-id=0%3A1&mode=design&t=AdVzP92bqnCxddVk-1)
+
+## UML
+-[UML](https://lucid.app/lucidchart/79a1b2cd-23e3-495c-81ce-0399ca191954/edit?viewport_loc=-403%2C-27%2C3089%2C1494%2CHWEp-vi-RSFO&invitationId=inv_d4baa32e-3a27-4f57-8a9d-7da266754cba)
