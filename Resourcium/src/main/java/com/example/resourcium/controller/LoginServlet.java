@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("email", email);
             session.setAttribute("role", user.getRole().getRoleName());
 
+            session.setAttribute("userId", user.getId());
+
             response.sendRedirect(request.getContextPath() + "/dashboard");
         } else {
             // Authentication failed, display an error message

@@ -121,7 +121,6 @@
 
 <%@ include file="../Component/Modals/ReservationModal/add-reservation.jsp" %>
 <%@ include file="../Component/Modals/ReservationModal/update-reservation.jsp" %>
-<%@ include file="../Component/Modals/ReservationModal/view-reservation.jsp" %>
 
 </body>
 

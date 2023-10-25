@@ -44,23 +44,20 @@ public class ReservationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        int reservationUserId =17;
-        int reservationEquipementId =2 ;
-        String reservationDateStr = "2023-10-24";
-        String returnDateStr = "2023-10-27";
+        int reservationUserId = Integer.parseInt(request.getParameter("user"));
+        int reservationEquipementId = Integer.parseInt(request.getParameter("assignedTo"));
+        String reservationDateStr = request.getParameter("reservationDate");
+        String returnDateStr = request.getParameter("returnDate");
 
         Reservation reservation = new Reservation();
 
-
         // Parse the date strings into LocalDate objects
-        LocalDate reservationDate = parseDate(reservationDateStr);
-        LocalDate returnDate = parseDate(returnDateStr);
+        LocalDate reservationDate = LocalDate.parse(reservationDateStr);
+        LocalDate returnDate = LocalDate.parse(returnDateStr);
 
         // Convert LocalDate to Date
         reservation.setReservationDate(Date.from(reservationDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
         reservation.setReturnDate(Date.from(returnDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -87,18 +84,14 @@ public class ReservationServlet extends HttpServlet {
             entityManagerFactory.close();
         }
 
-        System.out.println("Reservation saved successefully");
+        System.out.println("Reservation saved successfully");
         System.out.println(reservationUserId);
         System.out.println(reservationEquipementId);
         System.out.println(reservationDateStr);
         System.out.println(returnDateStr);
-    }
 
-    private LocalDate parseDate(String dateString) {
-        if (dateString != null && !dateString.isEmpty()) {
-            return LocalDate.parse(dateString);
-        }
-        return null;
+        response.sendRedirect(request.getContextPath() + "/reservations");
+
     }
 
 }
