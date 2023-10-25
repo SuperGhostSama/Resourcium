@@ -51,7 +51,8 @@
                 <td><%= task.getEndDate() %></td>
                 <td>
                     <a id="view-button" onclick="showTask(this)" href="#modal-tasks-view" data-bs-toggle="modal"><ion-icon name="eye-outline"></ion-icon></a>
-                    <a id="edit-button" href="#modal-tasks-edit" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>
+                    <a id="edit-button" onclick="fillUpdateModal(this)" href="#modal-tasks-edit" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>
+
 
                     <form class="d-inline" method="POST" action="${pageContext.request.contextPath}/TasksDeleteServlet">
                         <input type="hidden" name="taskId" value="<%= task.getId() %>">
@@ -77,6 +78,20 @@
         document.getElementById("startDateView").value=myData[2].innerText;
         document.getElementById("endDateView").value=myData[3].innerText;
     }
+    function fillUpdateModal(element) {
+        let myData = element.parentElement.parentElement.getElementsByTagName("td");
+        console.log(myData[0].innerText); // Log the assignedTo value
+        console.log(myData[1].innerText); // Log the description value
+        console.log(myData[2].innerText); // Log the startDate value
+        console.log(myData[3].innerText); // Log the endDate value
+;
+        // document.querySelector("[name='assignedToUpdate']").value = myData[0].innerText;
+        document.querySelector("[name='descriptionUpdate']").value = myData[1].innerText;
+        // document.querySelector("[name='startDateUpdate']").value = myData[2].innerText;
+        // document.querySelector("[name='endDateUpdate']").value = myData[3].innerText;
+    }
+
+
 </script>
 
 

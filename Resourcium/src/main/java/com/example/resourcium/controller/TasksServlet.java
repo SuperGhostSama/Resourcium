@@ -88,7 +88,6 @@ public class TasksServlet extends HttpServlet {
             entityManagerFactory.close();
         }
 
-        // Redirect to the tasks page or any other page as needed
         response.sendRedirect(request.getContextPath() + "/tasks");
     }
 
