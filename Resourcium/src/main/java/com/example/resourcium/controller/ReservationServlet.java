@@ -2,6 +2,7 @@ package com.example.resourcium.controller;
 
 import com.example.resourcium.model.Equipement;
 import com.example.resourcium.model.Reservation;
+import com.example.resourcium.model.Task;
 import com.example.resourcium.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -15,11 +16,34 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
-@WebServlet(name = "ReservationServlet", value = "/ReservationServlet")
+@WebServlet(name = "ReservationServlet", value = "/reservations")
 public class ReservationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            // Fetch all reservations
+            List<Reservation> reservations = em.createQuery("SELECT t FROM Reservation t", Reservation.class).getResultList();
+            request.setAttribute("reservations", reservations);
+
+            // Fetch all equipment
+            List<Equipement> equipment = em.createQuery("SELECT u FROM Equipement u", Equipement.class).getResultList();
+            request.setAttribute("equipment", equipment);
+
+        } finally {
+            em.close();
+            emf.close();
+        }
+        request.getRequestDispatcher("/WEB-INF/Dashboard/reservation.jsp").forward(request, response);
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int reservationUserId =17;
         int reservationEquipementId =2 ;
@@ -68,11 +92,6 @@ public class ReservationServlet extends HttpServlet {
         System.out.println(reservationEquipementId);
         System.out.println(reservationDateStr);
         System.out.println(returnDateStr);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     private LocalDate parseDate(String dateString) {

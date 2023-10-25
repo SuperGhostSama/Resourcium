@@ -30,7 +30,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="${pageContext.request.contextPath}/reservations">
                     <span class="icon">
                         <ion-icon name="folder-outline"></ion-icon>
                     </span>
