@@ -53,8 +53,8 @@
                     <a id="edit-button"  href="#modal-reservation-edit" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>
 
 
-                    <form class="d-inline" method="POST" action="">
-                        <input type="hidden" name="taskId" value="">
+                    <form class="d-inline" method="POST" action="${pageContext.request.contextPath}/ReservationDeleteServlet">
+                        <input type="hidden" name="reservationId" value="<%= reservation.getId() %>">
                         <button class="unstyled" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
                     </form>
                 </td>
@@ -101,7 +101,7 @@
 
 
                     <form class="d-inline" method="POST" action="">
-                        <input type="hidden" name="" value="">
+                        <input type="hidden" name="equipmentId" value="<%= equipment.getId() %>">
                         <button class="unstyled" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
                     </form>
                 </td>
