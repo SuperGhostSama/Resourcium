@@ -1,5 +1,6 @@
 package com.example.resourcium.controller;
 
+import com.example.resourcium.model.Equipement;
 import com.example.resourcium.model.Reservation;
 import com.example.resourcium.model.Task;
 import jakarta.persistence.EntityManager;
@@ -37,7 +38,16 @@ public class ReservationDeleteServlet extends HttpServlet {
 
                 try {
                     transaction.begin();
-                    em.remove(reservationToDelete); // Delete the reservation
+
+                    // Retrieve the associated equipment
+                    Equipement equipement = reservationToDelete.getEquipement();
+
+                    // Set the availability of the equipment to true
+                    equipement.setAvailability(true);
+
+                    // Delete the reservation
+                    em.remove(reservationToDelete);
+
                     transaction.commit();
                 } catch (Exception e) {
                     if (transaction != null && transaction.isActive()) {
