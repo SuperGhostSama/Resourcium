@@ -15,7 +15,18 @@ import java.io.IOException;
 public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/Dashboard/profile.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        String fullName = (String) session.getAttribute("fullName");
+        String email = (String) session.getAttribute("email");
+        String role = (String) session.getAttribute("role");
+
+        if (fullName != null && email != null && role != null) {
+            // User is authenticated, redirect to the dashboard
+            request.getRequestDispatcher("/WEB-INF/Dashboard/profile.jsp").forward(request, response);
+        } else {
+            // User is not authenticated, redirect to the login page
+            request.getRequestDispatcher("/WEB-INF/Auth/login.jsp").forward(request, response);
+        }
     }
 
     @Override

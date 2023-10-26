@@ -17,10 +17,20 @@ public class RouteServlet extends HttpServlet {
 
         switch (path) {
             case "/dashboard":
-                RequestDispatcher dashboardDispatcher = request.getRequestDispatcher("/WEB-INF/Dashboard/dashboard.jsp");
-                dashboardDispatcher.forward(request, response);
+                HttpSession session = request.getSession();
+                String fullName = (String) session.getAttribute("fullName");
+                String email = (String) session.getAttribute("email");
+                String role = (String) session.getAttribute("role");
+
+                if (fullName != null && email != null && role != null) {
+                    // User is authenticated, redirect to the dashboard
+                    request.getRequestDispatcher("/WEB-INF/Dashboard/dashboard.jsp").forward(request, response);
+                } else {
+                    // User is not authenticated, redirect to the login page
+                    request.getRequestDispatcher("/WEB-INF/Auth/login.jsp").forward(request, response);
+                }
                 break;
-            case "/hhh":
+            case "/nopage":
 
                 break;
             default:
