@@ -81,11 +81,17 @@ public class ReservationServlet extends HttpServlet {
 
                 transaction.commit();
 
+                // Clear any previous error message
+                request.getSession().removeAttribute("reservationError");
+
+                // Store success message in session
                 request.getSession().setAttribute("reservationSuccess", "Reservation saved successfully");
             } else {
+                // Clear any previous success message
+                request.getSession().removeAttribute("reservationSuccess");
+
                 request.getSession().setAttribute("reservationError", "Equipment is not available");
             }
-
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();

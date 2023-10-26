@@ -21,16 +21,21 @@
     }
 </style>
 <% if (session.getAttribute("reservationSuccess") != null) { %>
-<!-- Display reservationSuccess message in a green alert -->
-<div class="alert alert-success" role="alert">
-    <%= session.getAttribute("reservationSuccess") %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+
+    <strong><%= session.getAttribute("reservationSuccess") %></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
 </div>
+
 <% } %>
 
 <% if (session.getAttribute("reservationError") != null) { %>
-<!-- Display reservationError message in a red alert -->
-<div class="alert alert-danger" role="alert">
-    <%= session.getAttribute("reservationError") %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+    <strong><%= session.getAttribute("reservationError") %></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
 </div>
 <% } %>
 <div class="details">
