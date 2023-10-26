@@ -117,7 +117,7 @@
 <%--                    <a id=""  href="" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>--%>
 
 
-                    <form class="d-inline" method="POST" action="">
+                    <form class="d-inline" method="POST" action="${pageContext.request.contextPath}/EquipmentDeleteServlet">
                         <input type="hidden" name="equipmentId" value="<%= equipment.getId() %>">
                         <button class="unstyled" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
                     </form>
