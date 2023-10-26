@@ -89,10 +89,27 @@
 
 <div class="details">
     <div class="recentOrders">
+        <%
+            String userRole = (String) session.getAttribute("role");
+
+            if ("Administrator".equals(userRole)) {
+        %>
         <div class="cardHeader">
             <h2>Equipement List</h2>
             <a href="#modal-equipment-add" data-bs-toggle="modal" class="btns">Add Equipement</a>
         </div>
+        <%
+        } else {
+        %>
+        <div class="cardHeader">
+            <h2>Equipement List</h2>
+            <a href="#" class="btn btn-secondary">Add Equipement</a>
+        </div>
+        <%
+            }
+        %>
+
+
 
         <table>
             <thead>
@@ -100,7 +117,17 @@
                 <td>Equipment</td>
                 <td>Type</td>
                 <td>Availability</td>
+
+                <%
+                    if ("Administrator".equals(userRole)) {
+                %>
                 <td>Operations</td>
+                <%
+                    }
+                %>
+
+
+
             </tr>
             </thead>
             <tbody>
@@ -114,14 +141,18 @@
                 <td><%= equipment.getType() %></td>
                 <td><%= equipment.isAvailability() %></td>
                 <td>
-<%--                    <a id=""  href="" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>--%>
-
-
+                    <%
+                        if ("Administrator".equals(userRole)) {
+                    %>
                     <form class="d-inline" method="POST" action="${pageContext.request.contextPath}/EquipmentDeleteServlet">
                         <input type="hidden" name="equipmentId" value="<%= equipment.getId() %>">
                         <button class="unstyled" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
                     </form>
+                    <%
+                        }
+                    %>
                 </td>
+
             </tr>
             <%
                     }

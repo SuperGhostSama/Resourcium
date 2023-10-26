@@ -21,10 +21,28 @@
 
 <div class="details">
     <div class="recentOrders">
+
+        <%
+            String userRole = (String) session.getAttribute("role");
+
+            if ("Administrator".equals(userRole)) {
+        %>
         <div class="cardHeader">
             <h2>Tasks List</h2>
             <a href="#modal-tasks-add" data-bs-toggle="modal" class="btns">Add Task</a>
         </div>
+        <%
+        } else {
+        %>
+
+        <div class="cardHeader">
+            <h2>Tasks List</h2>
+            <a disabled href="" data-bs-toggle="modal" class="btn btn-secondary">Add Task</a>
+        </div>
+        <%
+            }
+        %>
+
 
         <table>
             <thead>
@@ -51,13 +69,19 @@
                 <td><%= task.getEndDate() %></td>
                 <td>
                     <a id="view-button" onclick="showTask(this)" href="#modal-tasks-view" data-bs-toggle="modal"><ion-icon name="eye-outline"></ion-icon></a>
+                    <%
+                        if ("Administrator".equals(userRole)) {
+                    %>
                     <a id="edit-button" onclick="fillUpdateModal(this)" href="#modal-tasks-edit" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>
-
 
                     <form class="d-inline" method="POST" action="${pageContext.request.contextPath}/TasksDeleteServlet">
                         <input type="hidden" name="taskId" value="<%= task.getId() %>">
                         <button class="unstyled" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
                     </form>
+                    <%
+                        }
+                    %>
+
                 </td>
             </tr>
             <%
