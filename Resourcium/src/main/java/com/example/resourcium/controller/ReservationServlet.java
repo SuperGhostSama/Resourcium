@@ -70,10 +70,22 @@ public class ReservationServlet extends HttpServlet {
             User assignedUser = entityManager.find(User.class, reservationUserId);
             reservation.setUser(assignedUser);
             Equipement equipement = entityManager.find(Equipement.class, reservationEquipementId);
-            reservation.setEquipement(equipement);
 
-            entityManager.persist(reservation);
-            transaction.commit();
+            if (equipement.isAvailability()) {
+
+                reservation.setEquipement(equipement);
+
+                equipement.setAvailability(false);
+
+                entityManager.persist(reservation);
+
+                transaction.commit();
+
+                request.getSession().setAttribute("reservationSuccess", "Reservation saved successfully");
+            } else {
+                request.getSession().setAttribute("reservationError", "Equipment is not available");
+            }
+
         } catch (Exception e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();

@@ -20,7 +20,19 @@
         background: transparent;
     }
 </style>
+<% if (session.getAttribute("reservationSuccess") != null) { %>
+<!-- Display reservationSuccess message in a green alert -->
+<div class="alert alert-success" role="alert">
+    <%= session.getAttribute("reservationSuccess") %>
+</div>
+<% } %>
 
+<% if (session.getAttribute("reservationError") != null) { %>
+<!-- Display reservationError message in a red alert -->
+<div class="alert alert-danger" role="alert">
+    <%= session.getAttribute("reservationError") %>
+</div>
+<% } %>
 <div class="details">
     <div class="recentOrders">
         <div class="cardHeader">
