@@ -91,7 +91,7 @@
     <div class="recentOrders">
         <div class="cardHeader">
             <h2>Equipement List</h2>
-            <a href="" data-bs-toggle="modal" class="btns">Add Equipement</a>
+            <a href="#modal-equipment-add" data-bs-toggle="modal" class="btns">Add Equipement</a>
         </div>
 
         <table>
@@ -114,7 +114,7 @@
                 <td><%= equipment.getType() %></td>
                 <td><%= equipment.isAvailability() %></td>
                 <td>
-                    <a id=""  href="" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>
+<%--                    <a id=""  href="" data-bs-toggle="modal"><ion-icon name="create-outline"></ion-icon></a>--%>
 
 
                     <form class="d-inline" method="POST" action="">
@@ -138,6 +138,7 @@
 
 <%@ include file="../Component/Modals/ReservationModal/add-reservation.jsp" %>
 <%@ include file="../Component/Modals/ReservationModal/update-reservation.jsp" %>
+<%@ include file="../Component/Modals/EquipmenModal/add-equipment.jsp" %>
 
 </body>
 
