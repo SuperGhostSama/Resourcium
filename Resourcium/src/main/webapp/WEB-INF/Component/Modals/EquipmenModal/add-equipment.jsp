@@ -2,7 +2,7 @@
 <div class="modal fade" id="modal-equipment-add" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="POST" id="form" >
+            <form action="${pageContext.request.contextPath}/EquipmentServlet" method="POST" id="form" >
 
 
                 <div class="modal-header">
