@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "RouteServlet", value = {"/dashboard", "/hh"})
+@WebServlet(name = "RouteServlet", value = {"/dashboard", "/"})
 public class RouteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +30,8 @@ public class RouteServlet extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/Auth/login.jsp").forward(request, response);
                 }
                 break;
-            case "/nopage":
+            case "/":
+
 
                 break;
             default:
